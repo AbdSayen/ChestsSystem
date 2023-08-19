@@ -5,16 +5,18 @@
         public string name;
         public float price;
         public Rarity rarity;
-        public Item(string name, float price, Rarity rarity)
+        public int count;
+        public Item(string name, float price, Rarity rarity, int count)
         {
             this.name = name;
             this.price = price;
             this.rarity = rarity;
+            this.count = count;
         }
     
         public string GetInfo()
         {
-            return $"{name} - Rarity: {rarity}; Price: {price}.";
+            return $"{count}X {name} - Rarity: {rarity}; Price: {price}.";
         }
     }
 

@@ -3,12 +3,12 @@
     internal class Chest
     {
         private Item[] possibleItems = {
-            new Item("Experience", 0, Rarity.common),
-            new Item("Coin", 10, Rarity.common),
-            new Item("Life Potion", 25, Rarity.rare),
-            new Item("Mana Potion", 35, Rarity.rare),
-            new Item("Ring", 75, Rarity.epic),
-            new Item("Sword", 100, Rarity.epic),
+            new Item("Experience", 0, Rarity.common, 1),
+            new Item("Coin", 10, Rarity.common, 1),
+            new Item("Life Potion", 25, Rarity.rare, 1),
+            new Item("Mana Potion", 35, Rarity.rare, 1),
+            new Item("Ring", 75, Rarity.epic, 1),   
+            new Item("Sword", 100, Rarity.epic, 1),
         };
 
         private List<Item> content = new List<Item>();
@@ -34,7 +34,6 @@
             for (int i = 0; i < possibleItems.Length; i++)
             {
                 Item item = possibleItems[i];
-                int count = 0;
 
                 while (true)
                 {

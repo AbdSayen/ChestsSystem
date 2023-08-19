@@ -16,7 +16,7 @@
                 switch (choiceId)
                 {
                     case 1:
-                        inventory.ViewInventory();
+                        inventory.ViewInventory(true);
                         break;
                     case 2:
                         SelectChest(inventory, GenerateChests(3));
@@ -41,14 +41,14 @@
 
             void SelectChest(Inventory recipient, List<Chest> currentChests)
             {
-                int chestId = 0;
+                int selectedChestId = 0;
 
                 Console.WriteLine($"\nThere are {currentChests.Count} chests with valuables in front of you. Enter the number of the chest you want to open\n");
                 while (true)
                 {
-                    int.TryParse(Console.ReadKey().KeyChar.ToString(), out chestId);
+                    int.TryParse(Console.ReadKey().KeyChar.ToString(), out selectedChestId);
 
-                    if (chestId <= 0 || chestId >= currentChests.Count + 1)
+                    if (selectedChestId <= 0 || selectedChestId >= currentChests.Count + 1)
                     {
                         Console.Clear();
                         Console.WriteLine($"\nYou entered a number outside the range 1-{currentChests.Count}. Please re-enter");
@@ -57,9 +57,9 @@
                 }
 
                 Console.Clear();
-                recipient.AddItems(currentChests[chestId - 1].GetContent());
+                recipient.AddItems(currentChests[selectedChestId - 1].GetContent());
                 Console.WriteLine("\nThe items have been moved to your inventory. Items:\n");
-                foreach (var item in currentChests[chestId - 1].GetContent())
+                foreach (var item in Inventory.StackItems(currentChests[selectedChestId - 1].GetContent()))
                 {
                     Console.WriteLine(item.GetInfo());
                 }
